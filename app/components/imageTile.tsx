@@ -1,26 +1,34 @@
-import { RowsPhotoAlbum } from "react-photo-album";
-import "react-photo-album/rows.css";
+import React, { useState } from 'react';
+
 
 
 type PhotoType = {
   src: string;
-  height: number;
-  width: number;
 };
 
 type ImageProps = {
-  photos: PhotoType[]
-  onClick?: () => void
+  data: PhotoType[]
 }
 
-const ImageTile: React.FC<ImageProps> = ( {photos, onClick} ) => {
+const ImageTile: React.FC<ImageProps> = ( { data } ) => {
+
+
 
   return (
-    <RowsPhotoAlbum
-      photos={photos}
-      padding={10}
-      onClick={onClick}
-    />
+    <>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {data.map((item, index ) => (
+          <div key={ index } className="aspect-w-16 aspect-h-9">
+            <img
+              className="w-full h-full object-cover"
+              src={item.src}
+              alt="gallery-photo"
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
+
 }
 export default ImageTile;
