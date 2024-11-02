@@ -3,13 +3,14 @@ import {
   GoogleAlbumsResponse,
   GoogleMediaItem,
   GoogleMediaItemsResponse,
-} from '../types/photohandler';
-const docs = require('@googleapis/docs');
+} from '../types/photoinfo';
+const docs = require('@googleapis/docs'); 
 
 const auth = new docs.auth.GoogleAuth({
   keyFilename: 'accountkey.json',
   scopes: ['https://www.googleapis.com/auth/documents']
 });
+
 
 
 export const getGoogleApiToken = async (): Promise<string> => {
