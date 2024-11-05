@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PhotoModal from '../detail/page';
 
-
-
 type PhotoType = {
   src: string;
 };
