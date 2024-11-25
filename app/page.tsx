@@ -1,16 +1,13 @@
 'use client';
 import React, { useState } from 'react';
 import { client, getList } from '../libs/microcms';
+import { MicroCMSImages, ImageProps } from '@/types/microcmstype';
 
-interface Gallery {
-  id: string;
-  photos: string;
-}
 
 
 
 export default function Home() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<MicroCMSImages>();
 
   const fetchImages = async () => {
     try{
@@ -18,26 +15,26 @@ export default function Home() {
         endpoint: 'getimages',
         contentId: process.env.NEXT_PUBLIC_CONTENT_ID,
       })
-      // const data = await response.json();
-      setImages(response);
-      console.log(images);
+      const data: MicroCMSImages = response;
+      // setImages(data);
+      console.log(data.photos);
     }catch (error) {
       console.error(error);
     }
 
   };
-  // client
-  // .get({
-  //   endpoint: 'getimages',
-  //   contentId: process.env.NEXT_PUBLIC_CONTENT_ID,
-  // })
-  // .then((res) => console.log(res));
+
 
 
   return (
   <div>
     <h1>Gallery</h1>
     <button onClick={fetchImages}>Load Images</button>
+      {images && (
+        <div>
+          <img src={images.photos.url} alt="photo" />
+        </div>
+      )}
   </div>
   );
 }

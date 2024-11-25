@@ -10,3 +10,9 @@ export type MicroCMSImages = {
     width: number;
   };
 };
+
+export type ImageProps = {
+    url: string;
+    hegiht: number;
+    width: number;
+}
