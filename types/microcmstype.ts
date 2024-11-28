@@ -6,13 +6,9 @@ export type MicroCMSImages = {
   revisedAt: string;
   photos: {
     url: string;
-    hegiht: number;
+    height: number;
     width: number;
-  };
+  }[];
 };
 
-export type ImageProps = {
-    url: string;
-    hegiht: number;
-    width: number;
-}
+export type PhotoArray = Pick<MicroCMSImages,"photos">;

@@ -1,40 +1,41 @@
 'use client';
-import React, { useState } from 'react';
-import { client, getList } from '../libs/microcms';
-import { MicroCMSImages, ImageProps } from '@/types/microcmstype';
+import React, { useState, useEffect } from 'react';
+import { client } from '../libs/microcms';
+import { MicroCMSImages, PhotoArray } from '@/types/microcmstype';
 
 
 
 
 export default function Home() {
-  const [images, setImages] = useState<MicroCMSImages>();
+  const [images, setImages] = useState<MicroCMSImages['photos']>([]);
 
   const fetchImages = async () => {
     try{
-      const response = await client.get({
+      const response = await client.get<MicroCMSImages>({
         endpoint: 'getimages',
         contentId: process.env.NEXT_PUBLIC_CONTENT_ID,
       })
-      const data: MicroCMSImages = response;
-      // setImages(data);
-      console.log(data.photos);
+      const data = response;
+      setImages(data.photos);
     }catch (error) {
       console.error(error);
     }
 
   };
 
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
 
 
   return (
   <div>
-    <h1>Gallery</h1>
-    <button onClick={fetchImages}>Load Images</button>
-      {images && (
-        <div>
-          <img src={images.photos.url} alt="photo" />
-        </div>
-      )}
+    <div>
+      {images.map((photo, index) => (
+        <img key={index} src={photo.url} alt="photo" />
+      ))}
+    </div>
   </div>
   );
 }
