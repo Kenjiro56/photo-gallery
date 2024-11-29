@@ -12,18 +12,18 @@ export type Gallery = {
   photos: MicroCMSImage;
 } & MicroCMSDate;
 
-if (!process.env.NEXT_PUBLIC_SERVICE_DOMAIN) {
+if (!process.env.SERVICE_DOMAIN) {
  throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
 
-if (!process.env.NEXT_PUBLIC_API_KEY) {
+if (!process.env.API_KEY) {
  throw new Error("MICROCMS_API_KEY is required");
 }
 
 // API取得用のクライアントを作成
 export const client = createClient({
- serviceDomain: process.env.NEXT_PUBLIC_SERVICE_DOMAIN,
- apiKey: process.env.NEXT_PUBLIC_API_KEY,
+ serviceDomain: process.env.SERVICE_DOMAIN,
+ apiKey: process.env.API_KEY,
 });
 
 // ブログ一覧を取得
