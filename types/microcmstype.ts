@@ -10,5 +10,3 @@ export type MicroCMSImages = {
     width: number;
   }[];
 };
-
-export type PhotoArray = Pick<MicroCMSImages,"photos">;

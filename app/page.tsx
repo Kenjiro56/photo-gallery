@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { client } from '../libs/microcms';
-import { MicroCMSImages, PhotoArray } from '@/types/microcmstype';
+import { MicroCMSImages } from '@/types/microcmstype';
 
 
 
