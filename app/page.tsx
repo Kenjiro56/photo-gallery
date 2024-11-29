@@ -1,25 +1,41 @@
-'use client'
+'use client';
+import React, { useState, useEffect } from 'react';
+import { client } from '../libs/microcms';
+import { MicroCMSImages, PhotoArray } from '@/types/microcmstype';
 
-import { 
-  CldUploadWidget,
-} from "next-cloudinary";
 
 
 
 export default function Home() {
+  const [images, setImages] = useState<MicroCMSImages['photos']>([]);
+
+  const fetchImages = async () => {
+    try{
+      const response = await client.get<MicroCMSImages>({
+        endpoint: 'getimages',
+        contentId: process.env.NEXT_PUBLIC_CONTENT_ID,
+      })
+      const data = response;
+      setImages(data.photos);
+    }catch (error) {
+      console.error(error);
+    }
+
+  };
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <section className="flex flex-col items-center justify-between">
-        <CldUploadWidget 
-        uploadPreset="next-app"
-        >
-          {({open}) => {
-            return (
-              <button onClick={() => open()}>Upload an Image</button>
-          );
-          }}
-        </CldUploadWidget>
-      </section>
+  <div>
+    <div>
+      {images.map((photo, index) => (
+        <img key={index} src={photo.url} alt="photo" />
+      ))}
     </div>
+  </div>
   );
 }
