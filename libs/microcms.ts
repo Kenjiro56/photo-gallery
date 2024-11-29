@@ -12,7 +12,7 @@ export type Gallery = {
   photos: MicroCMSImage;
 } & MicroCMSDate;
 
-if (!process.env.SERVICE_DOMAIN) {
+if (!process.env.MICROCMS_SERVICE_DOMAIN) {
  throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
 
@@ -22,6 +22,6 @@ if (!process.env.API_KEY) {
 
 // API取得用のクライアントを作成
 export const client = createClient({
- serviceDomain: process.env.SERVICE_DOMAIN,
+ serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
  apiKey: process.env.API_KEY,
 });
