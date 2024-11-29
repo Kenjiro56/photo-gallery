@@ -32,6 +32,7 @@ export default function Home() {
   return (
   <div>
     <div>
+      <h1>Kenjiro's Gallery</h1>
       {images.map((photo, index) => (
         <img key={index} src={photo.url} alt="photo" />
       ))}
