@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { UIProvider } from "@yamada-ui/react";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -24,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
+      <html lang="ja">
+        <body>
+          <UIProvider>
+            {children}
+          </UIProvider>
         </body>
       </html>
   );
