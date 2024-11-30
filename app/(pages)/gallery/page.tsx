@@ -1,5 +1,5 @@
 import React from 'react';
-import { client } from '../utils/microcms';
+import { client } from '@/utils/microcms';
 import { MicroCMSImages } from '@/types/microcmstype';
 
 async function getImages(): Promise<MicroCMSImages['photos']> {
@@ -13,8 +13,7 @@ async function getImages(): Promise<MicroCMSImages['photos']> {
   return data.photos;
 }
 
-
-export default async function Home() {
+export default async function Gallery() {
   const images = await getImages();
   return (
     <div>
