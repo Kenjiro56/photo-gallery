@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { UIProvider} from "@yamada-ui/react";
 import { customTheme } from "./theme";
-import localFont from "next/font/local";
 import "./globals.css";
 
 export const metadata: Metadata = {
