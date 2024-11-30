@@ -18,7 +18,7 @@ export default async function Home() {
   const images = await getImages();
   return (
     <div>
-      <h1>Kenjiros Gallery</h1>
+      <h1>Kenjiro Gallery</h1>
       {images.map((photo, index) => (
         <img key={index} src={photo.url} alt="photo" />
       ))}
