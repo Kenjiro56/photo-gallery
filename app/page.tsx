@@ -22,8 +22,8 @@ export default async function Home() {
       <h1>Kenjiro Gallery</h1>
       <Grid templateColumns="repeat(3, 1fr)" gap="1%">
         {images.map((photo, index) => (
-          <GridItem>
-            <Image key={index} src={photo.url} alt="photo" borderWidth="2px" />
+          <GridItem key={index}>
+            <Image src={photo.url} alt="photo" borderWidth="2px" />
           </GridItem>
         ))}
       </Grid>
