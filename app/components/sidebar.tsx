@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import { GrGallery } from "react-icons/gr";
 import { HouseIcon, ImagesIcon } from "@yamada-ui/lucide"
 import { Link, Flex, Box } from '@yamada-ui/react';
 
