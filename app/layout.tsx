@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { UIProvider} from "@yamada-ui/react";
 import { customTheme } from "./theme";
 import "./globals.css";
+import Footer from "./components/footer";
+import SideBar from "./components/sidebar";
 
 export const metadata: Metadata = {
   title: "Kenjiro Gallery",
@@ -19,6 +21,8 @@ export default function RootLayout({
         <body>
           <UIProvider theme={customTheme}>
             {children}
+            <SideBar/>
+            <Footer />
           </UIProvider>
         </body>
       </html>

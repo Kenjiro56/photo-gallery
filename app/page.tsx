@@ -1,32 +1,38 @@
 import React from 'react';
 import { client } from '../utils/microcms';
-import { MicroCMSImages } from '@/types/microcmstype';
-import { Image, Grid, GridItem } from "@yamada-ui/react";
+import { MicroCMSPhoto } from '@/types/microcmstype';
+import {
+  Carousel,
+  CarouselSlide,
+} from "@yamada-ui/carousel"
+import { Center, Heading, Image, VStack } from "@yamada-ui/react";
 
-async function getImages(): Promise<MicroCMSImages['photos']> {
-  const data = await client.get<MicroCMSImages>({
-    endpoint: 'getimages',
-    contentId: process.env.NEXT_PUBLIC_CONTENT_ID,
+
+async function getImages(): Promise<MicroCMSPhoto[]> {
+  const data = await client.get({
+    endpoint: 'photo',
     queries: {
       limit: 20,
     },
   });
-  return data.photos;
+  return data.contents;
 }
 
 
 export default async function Home() {
-  const images = await getImages();
+  const data = await getImages();
   return (
-    <div>
-      <h1>Kenjiro Gallery</h1>
-      <Grid templateColumns="repeat(3, 1fr)" gap="1%" mb='5%'>
-        {images.map((photo, index) => (
-          <GridItem key={index}>
-            <Image src={photo.url} alt="photo" borderWidth="2px" />
-          </GridItem>
+    <VStack justifyContent="center">
+      <Center>
+        <Heading as="h1" fontSize='36px'>New Photo</Heading>
+      </Center>
+      <Carousel slideSize="50%" autoplay>
+        {data.map((photo, index) => (
+          <CarouselSlide as={Center} bg="primary" key={index}>
+            <Image src={photo.image.url} alt='photo'/>
+          </CarouselSlide>
         ))}
-      </Grid>
-    </div>
+      </Carousel>
+    </VStack>
   );
 }
