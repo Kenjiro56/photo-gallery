@@ -1,19 +1,30 @@
+'use client';
 import React from 'react';
-import { FaHome } from "react-icons/fa";
 import { GrGallery } from "react-icons/gr";
-import { Link, Flex, Float } from '@yamada-ui/react';
+import { HouseIcon, ImagesIcon } from "@yamada-ui/lucide"
+import { Link, Flex, Box } from '@yamada-ui/react';
 
 
 const SideBar = () => {
   return (
-    <Flex direction="column" height="100vh" position="fixed">
-        <Link href="/">
-          <FaHome />
-        </Link>
-        <Link href="gallery">
-        <GrGallery />
-        </Link>
-    </Flex>
+    <Box
+      position='fixed'
+      left={0}
+      top={0}
+      w='5%'
+      h="100%"
+      bg="gray.100"
+      borderWidth={2}
+    >
+      <Flex direction="column" alignItems="center" p='5' gap='10'>
+          <Link href="/">
+            <HouseIcon />
+          </Link>
+          <Link href="gallery">
+            <ImagesIcon />
+          </Link>
+      </Flex>
+    </Box>
   );
 }
 
