@@ -22,7 +22,7 @@ async function getImages(): Promise<MicroCMSPhoto[]> {
 export default async function Home() {
   const data = await getImages();
   return (
-    <div>
+    <VStack justifyContent="center">
       <Center>
         <Heading as="h1" fontSize='36px'>New Photo</Heading>
       </Center>
@@ -33,6 +33,6 @@ export default async function Home() {
           </CarouselSlide>
         ))}
       </Carousel>
-    </div>
+    </VStack>
   );
 }
