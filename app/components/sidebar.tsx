@@ -10,17 +10,23 @@ const SideBar = () => {
       position='fixed'
       left={0}
       top={0}
-      w='5%'
+      w='8%'
       h="100%"
       bg="gray.100"
       borderWidth={2}
     >
-      <Flex direction="column" alignItems="center" p='5' gap='10'>
+      <Flex direction="column" alignItems="left" p='10' gap='10'>
           <Link href="/">
-            <HouseIcon />
+            <Flex gap='5'>
+              <HouseIcon />
+              Home
+            </Flex>
           </Link>
           <Link href="gallery">
-            <ImagesIcon />
+            <Flex gap='5'>
+              <ImagesIcon />
+              Gallery
+            </Flex>
           </Link>
       </Flex>
     </Box>
