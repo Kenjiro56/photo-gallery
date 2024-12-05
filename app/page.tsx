@@ -1,22 +1,10 @@
 import React from 'react';
-import { client } from '../utils/microcms';
-import { MicroCMSPhoto } from '@/types/microcmstype';
+import { getImages } from '../utils/microcms';
 import {
   Carousel,
   CarouselSlide,
 } from "@yamada-ui/carousel"
 import { Center, Heading, Image, VStack } from "@yamada-ui/react";
-
-
-async function getImages(): Promise<MicroCMSPhoto[]> {
-  const data = await client.get({
-    endpoint: 'photo',
-    queries: {
-      limit: 20,
-    },
-  });
-  return data.contents;
-}
 
 
 export default async function Home() {

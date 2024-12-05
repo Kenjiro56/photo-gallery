@@ -1,5 +1,5 @@
 import { createClient } from "microcms-js-sdk";
-import { MicroCMSImages } from '@/types/microcmstype';
+import { MicroCMSImages, MicroCMSPhoto } from '@/types/microcmstype';
 
 
 if (!process.env.MICROCMS_API_KEY) {
@@ -24,3 +24,13 @@ export const fetchData = async () => {
     throw error;
   }
 };
+
+export async function getImages(): Promise<MicroCMSPhoto[]> {
+  const data = await client.get({
+    endpoint: 'photo',
+    queries: {
+      limit: 20,
+    },
+  });
+  return data.contents;
+}

@@ -29,5 +29,5 @@ export type MicroCMSPhoto = {
       width: number;
     },
     takenAt: string,
-    category: Categrory,
+    category: string[],
 };
