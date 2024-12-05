@@ -7,15 +7,25 @@ type SelectorProps = {
   props: MicroCMSPhoto[];
 }
 
-const category_items: SelectItem[] = [
-  { value: 'food', label: 'food' },
-  { value: 'nature', label: 'nature' },
-  { value: 'life', label: 'life' },
-];
-
 const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   const [selectCategory, setSelectCategory] = useState<string>('');
   const [renderData, setRenderData] = useState<MicroCMSPhoto[]>(props);
+  const [categoryItems, setCategoryItems] = useState<SelectItem[]>([]);
+
+
+  useEffect(()=> {
+    const categories = new Set<string>();
+    props.forEach((photo) => {
+      categories.add(photo.category[0]);
+    });
+
+    setCategoryItems(
+      Array.from(categories).map((category) =>({
+        value: category,
+        label: category,
+      }))
+    );
+  }, [props]);
 
   useEffect(() => {
     if (selectCategory === '') {
@@ -34,7 +44,7 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
           w="10%"
           border="2px solid #ccc"
           borderRadius="10px"
-          items={category_items}
+          items={categoryItems}
           onChange={(value) => setSelectCategory(value)}
         />
       </Flex>
