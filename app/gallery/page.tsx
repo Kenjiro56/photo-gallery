@@ -1,7 +1,7 @@
 import React from 'react';
 import { client } from '@/utils/microcms';
 import { MicroCMSPhoto } from '@/types/microcmstype';
-import { Image, Grid, GridItem, Card, CardBody } from "@yamada-ui/react";
+import { Image, Grid, GridItem, Card, CardBody, } from "@yamada-ui/react";
 
 async function getImages(): Promise<MicroCMSPhoto[]> {
   const data = await client.get({
@@ -13,17 +13,16 @@ async function getImages(): Promise<MicroCMSPhoto[]> {
   return data.contents;
 }
 
-
 export default async function Gallery() {
   const data = await getImages();
+
   return (
     <div>
-      <h1>Kenjiro Gallery</h1>
       <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='5%'>
         {data.map((photo, index) => (
           <GridItem key={index}>
             <Card backgroundColor='white'>
-              <CardBody p='30'>
+              <CardBody p='5%'>
                 <Image src={photo.image.url} alt="photo" />
               </CardBody>
             </Card>

@@ -23,6 +23,7 @@ export default async function Home() {
   const data = await getImages();
   return (
     <VStack justifyContent="center">
+      <Image src='/thumbnail-string.png' alt='thumnbnail' height='20vh' objectFit='contain' />
       <Center>
         <Heading as="h1" fontSize='36px'>New Photo</Heading>
       </Center>
