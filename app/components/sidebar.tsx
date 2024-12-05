@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { HouseIcon, ImagesIcon } from "@yamada-ui/lucide"
-import { Link, Flex, Box } from '@yamada-ui/react';
+import { Link, Flex, Box, Text } from '@yamada-ui/react';
 
 
 const SideBar = () => {
@@ -17,15 +17,19 @@ const SideBar = () => {
     >
       <Flex direction="column" alignItems="left" p='10' gap='10'>
           <Link href="/">
-            <Flex gap='5'>
-              <HouseIcon />
-              Home
+            <Flex gap='5'  align="center">
+              <HouseIcon fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}  />
+              <Text display={{ base: "none", md: "block" }}>
+                Home
+              </Text>
             </Flex>
           </Link>
           <Link href="gallery">
-            <Flex gap='5'>
-              <ImagesIcon />
-              Gallery
+            <Flex gap='5'  align="center">
+              <ImagesIcon fontSize={{ base: "lg", md: "2xl", lg: "3xl" }} />
+              <Text display={{ base: "none", md: "block" }}>
+                Gallery
+              </Text>
             </Flex>
           </Link>
       </Flex>
