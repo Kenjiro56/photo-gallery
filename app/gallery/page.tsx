@@ -1,7 +1,6 @@
 import React from 'react';
 import { client } from '@/utils/microcms';
 import { MicroCMSPhoto } from '@/types/microcmstype';
-import { Image, Grid, GridItem, Card, CardBody, } from "@yamada-ui/react";
 import CategorySelector from './components/categorySelector';
 
 async function getImages(): Promise<MicroCMSPhoto[]> {
