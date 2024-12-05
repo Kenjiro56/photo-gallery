@@ -4,6 +4,7 @@ import { customTheme } from "./theme";
 import "./globals.css";
 import Footer from "./components/footer";
 import SideBar from "./components/sidebar";
+import MoblieMenu from "./components/mobileMenu";
 
 export const metadata: Metadata = {
   title: "Kenjiro Gallery",
