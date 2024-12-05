@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { HouseIcon, ImagesIcon } from "@yamada-ui/lucide"
-import { Link, Flex, Box,
+import { Link, Flex,
     Drawer,
     DrawerBody,
     Button,
