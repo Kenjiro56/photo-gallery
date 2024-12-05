@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image } from "@yamada-ui/react";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 
@@ -15,9 +15,19 @@ const category_items: SelectItem[] = [
 
 const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   const [selectCategory, setSelectCategory] = useState<string>('');
+  const [renderData, setRenderData] = useState<MicroCMSPhoto[]>(props);
+
+  useEffect(() => {
+    if (selectCategory === '') {
+      setRenderData(props);
+    } else {
+      setRenderData(props.filter((photo) => photo.category[0] === selectCategory));
+    }
+  }, [selectCategory, props]);
+
   return (
     <>
-    <Flex justify='right' mb='20'>
+      <Flex justify='right' mb='20'>
         <Select
           placeholder="Category"
           placeholderInOptions={false}
@@ -29,15 +39,13 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
         />
       </Flex>
       <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='5%'>
-        {props.map((photo, index) => (
+        {renderData.map((photo, index) => (
           <GridItem key={index}>
-            { photo.category[0] === selectCategory &&
               <Card backgroundColor='white'>
                 <CardBody p='5%'>
                     <Image src={photo.image.url} alt="photo" />
                 </CardBody>
               </Card>
-            }
           </GridItem>
         ))}
       </Grid>
