@@ -16,6 +16,7 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   const [categoryItems, setCategoryItems] = useState<SelectItem[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalSrc, setModalSrc] = useState<string>('');
+  const [ascFlag, setAscFlag] = useState<boolean>(true);
 
 
   useEffect(()=> {
@@ -40,6 +41,14 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
     }
   }, [selectCategory, props]);
 
+  useEffect(() => {
+    if (ascFlag) {
+      setRenderData(renderData.sort((a, b) => (a.takenAt > b.takenAt ? 1 : -1)));
+    } else {
+      setRenderData(renderData.sort((a, b) => (a.takenAt < b.takenAt ? 1 : -1)));
+    }
+  }, [ascFlag]);
+
   const modalHandler = (props: MicroCMSPhoto) => {
     setIsOpen(true);
     setModalSrc(props.image.url);
@@ -47,7 +56,12 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
 
   return (
     <>
-      <Flex justify='right' mb='20'>
+      <Flex justify='right' gap='2'>
+        <Button onClick={() => setAscFlag(!ascFlag)}>
+          {
+            ascFlag ? 'Newest' : 'Oldest'
+          }
+        </Button>
         <Select
           placeholder="All"
           w="10%"
