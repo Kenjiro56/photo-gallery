@@ -27,6 +27,9 @@ export const fetchData = async () => {
 
 export async function getImages(): Promise<MicroCMSPhoto[]> {
   const data = await client.get({
+    customRequestInit: {
+      cache: "no-store",
+    },
     endpoint: 'photo',
     queries: {
       limit: 20,
