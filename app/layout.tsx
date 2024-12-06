@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { UIProvider} from "@yamada-ui/react";
-import { customTheme } from "./theme";
+// import { customTheme } from "./theme";
+import { theme } from "./theme"
 import "./globals.css";
 import Footer from "./components/footer";
 import SideBar from "./components/sidebar";
@@ -19,7 +20,8 @@ export default function RootLayout({
   return (
       <html lang="ja">
         <body>
-          <UIProvider theme={customTheme}>
+          <UIProvider>
+          {/* <UIProvider theme={theme}> */}
             {children}
             <SideBar/>
             <Footer />
