@@ -1,16 +1,22 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image } from "@yamada-ui/react";
+import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button } from "@yamada-ui/react";
 import { MicroCMSPhoto } from '@/types/microcmstype';
+import DetailModal from '@/app/components/detailModal';
 
 type SelectorProps = {
   props: MicroCMSPhoto[];
 }
 
+
+
 const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   const [selectCategory, setSelectCategory] = useState<string>('');
   const [renderData, setRenderData] = useState<MicroCMSPhoto[]>(props);
   const [categoryItems, setCategoryItems] = useState<SelectItem[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalSrc, setModalSrc] = useState<string>('');
+  const [ascFlag, setAscFlag] = useState<boolean>(true);
 
 
   useEffect(()=> {
@@ -35,12 +41,29 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
     }
   }, [selectCategory, props]);
 
+  useEffect(() => {
+    if (ascFlag) {
+      setRenderData(renderData.sort((a, b) => (a.takenAt > b.takenAt ? 1 : -1)));
+    } else {
+      setRenderData(renderData.sort((a, b) => (a.takenAt < b.takenAt ? 1 : -1)));
+    }
+  }, [ascFlag]);
+
+  const modalHandler = (props: MicroCMSPhoto) => {
+    setIsOpen(true);
+    setModalSrc(props.image.url);
+  };
+
   return (
     <>
-      <Flex justify='right' mb='20'>
+      <Flex justify='right' gap='2'>
+        <Button onClick={() => setAscFlag(!ascFlag)}>
+          {
+            ascFlag ? 'Newest' : 'Oldest'
+          }
+        </Button>
         <Select
-          placeholder="Category"
-          placeholderInOptions={false}
+          placeholder="All"
           w="10%"
           border="2px solid #ccc"
           borderRadius="10px"
@@ -53,12 +76,14 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
           <GridItem key={index}>
               <Card backgroundColor='white'>
                 <CardBody p='5%'>
-                    <Image src={photo.image.url} alt="photo" />
+                    <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)}/>
                 </CardBody>
               </Card>
           </GridItem>
         ))}
       </Grid>
+
+      {isOpen && <DetailModal src={modalSrc} onClose={() => setIsOpen(false)}/>}
     </>
   );
 };

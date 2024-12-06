@@ -1,4 +1,4 @@
-import { Box, Center } from '@yamada-ui/react';
+import { Box, Text } from '@yamada-ui/react';
 import React from 'react';
 
 const Footer = () => {
@@ -6,11 +6,13 @@ const Footer = () => {
     <Box
       position='fixed'
       bottom={0}
+      left={0}
       w='full'
-      h="%"
       bg="gray.100"
     >
-      <Center>© 2024 Kenjiro Hirose</Center>
+      <Text align='center' justifyContent='center'>
+        © 2024 Kenjiro Hirose
+      </Text>
     </Box>
   );
 };
