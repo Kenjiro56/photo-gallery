@@ -17,7 +17,7 @@ export default async function Home() {
       </Center>
       <Carousel slideSize="50%" autoplay>
         {data.map((photo, index) => (
-          <CarouselSlide as={Center} bg="primary" key={index}>
+          <CarouselSlide as={Center} key={index}>
             <Image src={photo.image.url} alt='photo'/>
           </CarouselSlide>
         ))}

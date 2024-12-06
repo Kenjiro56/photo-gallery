@@ -45,7 +45,6 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
     setModalSrc(props.image.url);
   };
 
-
   return (
     <>
       <Flex justify='right' mb='20'>
