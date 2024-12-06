@@ -15,19 +15,19 @@ const SideBar = () => {
       bg="gray.100"
       borderWidth={2}
     >
-      <Flex direction="column" alignItems="left" p='10' gap='10'>
+      <Flex direction="column" alignItems="left" gap='3' p='2'>
           <Link href="/">
-            <Flex gap='5'  align="center">
-              <HouseIcon fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}  />
-              <Text display={{ base: "none", md: "block" }}>
+            <Flex gap='1'>
+              <HouseIcon fontSize={{lg: "3xl" }}  />
+              <Text display={{ base: "block", md: "none" }}>
                 Home
               </Text>
             </Flex>
           </Link>
           <Link href="gallery">
-            <Flex gap='5'  align="center">
-              <ImagesIcon fontSize={{ base: "lg", md: "2xl", lg: "3xl" }} />
-              <Text display={{ base: "none", md: "block" }}>
+            <Flex gap='1'>
+              <ImagesIcon fontSize={{ lg: "3xl" }} />
+              <Text display={{base: "block", md: "none" }}>
                 Gallery
               </Text>
             </Flex>
