@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Button, CardBody, Center, ModalOverlay } from '@yamada-ui/react';
+import { Card, Image, Button, CardBody, Center} from '@yamada-ui/react';
 
 type DetailModalProps = {
   src: string;
