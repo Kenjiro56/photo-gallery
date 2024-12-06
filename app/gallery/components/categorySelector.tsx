@@ -74,9 +74,9 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
       <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='5%'>
         {renderData.map((photo, index) => (
           <GridItem key={index}>
-              <Card backgroundColor='white'>
+              <Card h="100%" align='center'>
                 <CardBody p='5%'>
-                    <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)}/>
+                    <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)} objectFit="cover"/>
                 </CardBody>
               </Card>
           </GridItem>
