@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.4.2",
+    "@chakra-ui/react": "^3.2.3",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@notionhq/client": "^2.2.15",
     "@yamada-ui/carousel": "^2.1.6",
     "@yamada-ui/lucide": "^1.9.1",
@@ -16,6 +20,7 @@
     "axios": "^1.7.7",
     "cloudinary": "^2.5.1",
     "dotenv": "^16.4.5",
+    "framer-motion": "^11.13.1",
     "googleapis": "^144.0.0",
     "microcms-js-sdk": "^3.1.2",
     "next": "14.2.15",

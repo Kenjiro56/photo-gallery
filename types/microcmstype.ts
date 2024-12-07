@@ -30,4 +30,5 @@ export type MicroCMSPhoto = {
     },
     takenAt: string,
     category: string[],
+    comment: string,
 };
