@@ -1,8 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button } from "@yamada-ui/react";
+import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button, CardFooter, Text, Center } from "@yamada-ui/react";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 import DetailModal from '@/app/components/detailModal';
+import { Zen_Kurenaido } from "next/font/google";
+
+const ZenKurenaidoFont = Zen_Kurenaido({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 type SelectorProps = {
   props: MicroCMSPhoto[];
@@ -71,13 +77,16 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
           onChange={(value) => setSelectCategory(value)}
         />
       </Flex>
-      <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='5%'>
+      <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='15%'>
         {renderData.map((photo, index) => (
           <GridItem key={index}>
               <Card backgroundColor='white' h='100%'>
                 <CardBody p='5%'>
                     <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)} objectFit="cover"/>
                 </CardBody>
+                <CardFooter justifyContent="center" className={ZenKurenaidoFont.className}>
+                  エモい写真
+                </CardFooter>
               </Card>
           </GridItem>
         ))}
