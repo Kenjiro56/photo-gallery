@@ -20,8 +20,6 @@ type SelectorProps = {
   props: MicroCMSPhoto[];
 }
 
-
-
 const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   const [selectCategory, setSelectCategory] = useState<string>('');
   const [renderData, setRenderData] = useState<MicroCMSPhoto[]>(props);
