@@ -66,11 +66,13 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
   }, [selectCategory, props]);
 
   useEffect(() => {
-    if (ascFlag) {
-      setRenderData(renderData.sort((a, b) => (a.takenAt > b.takenAt ? 1 : -1)));
-    } else {
-      setRenderData(renderData.sort((a, b) => (a.takenAt < b.takenAt ? 1 : -1)));
-    }
+    const sortedData = [...renderData].sort((a, b) => {
+      const dateA = new Date(a.takenAt).getTime();
+      const dateB = new Date(b.takenAt).getTime();
+      return ascFlag ? dateA - dateB : dateB - dateA;
+    });
+
+    setRenderData(sortedData);
   }, [ascFlag]);
 
   const modalHandler = (props: MicroCMSPhoto) => {
