@@ -26,7 +26,7 @@ const DetailModal: React.FC<DetailModalProps> = (props) => {
               <Tag>
                 { props.imageInfo.category[0] }
               </Tag>
-              <Text className={ZenKurenaidoFont.className}>
+              <Text className={ZenKurenaidoFont.className} fontSize='1.5vw'>
                 { props.imageInfo.comment }
               </Text>
             </Flex>

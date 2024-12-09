@@ -25,9 +25,11 @@ export default async function Home() {
   const newData = data.slice(0, numShowImg);
   return (
     <VStack justifyContent="center">
-      <Text as={Center} className={ PacificoFont.className } fontSize='8xl' pb='20'>Kenjiro&#39;s Gallery</Text>
+      <Text as={Center} className={ PacificoFont.className } fontSize='5vw' pb='20'>
+        Kenjiro&#39;s Gallery
+      </Text>
       <Center>
-        <h1 className={`${ NothingYouCouldDoFont.className } text-5xl`} >New Photo</h1>
+        <h1 className={`${ NothingYouCouldDoFont.className } text-[3vw]`} >New Photo</h1>
       </Center>
       <Carousel slideSize="50%" autoplay>
         {newData.map((photo, index) => (
