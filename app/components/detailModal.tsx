@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Button, CardBody, Center, CardFooter, Text, Tag, VStack, Flex } from '@yamada-ui/react';
+import { Card, Image, CardBody, Center, CardFooter, Text, Tag, Flex } from '@yamada-ui/react';
 import { Zen_Kurenaido } from "next/font/google";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 
