@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Button, CardBody, Center, CardFooter, Text, Tag } from '@yamada-ui/react';
+import { Card, Image, CardBody, Center, CardFooter, Text, Tag, Flex } from '@yamada-ui/react';
 import { Zen_Kurenaido } from "next/font/google";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 
@@ -15,21 +15,22 @@ type DetailModalProps = {
 
 const DetailModal: React.FC<DetailModalProps> = (props) => {
   return (
-    <div className="fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50">
+    <div className="fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50" onClick={props.onClose} >
       <Center className='h-screen items-center'>
         <Card backgroundColor='white' position='relative' width='70%'>
           <CardBody>
-            <Image src={props.imageInfo.image.url} alt="photo" />
+            <Image src={props.imageInfo.image.url} alt="photo" objectFit='contain' />
           </CardBody>
           <CardFooter justifyContent="center">
-            <Tag>
-              { props.imageInfo.category[0] }
-            </Tag>
-            <Text className={ZenKurenaidoFont.className}>
-              { props.imageInfo.comment }
-            </Text>
+            <Flex align='center' direction='column' gap='2'>
+              <Tag>
+                { props.imageInfo.category[0] }
+              </Tag>
+              <Text className={ZenKurenaidoFont.className}>
+                { props.imageInfo.comment }
+              </Text>
+            </Flex>
           </CardFooter>
-          <Button onClick={props.onClose} textColor='black'>Close</Button>
         </Card>
       </Center>
     </div>
