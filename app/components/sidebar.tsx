@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { HouseIcon, ImagesIcon } from "@yamada-ui/lucide"
-import { Link, Flex, Box, Text, useBreakpointValue } from '@yamada-ui/react';
+import { Link, Flex, Box, Text } from '@yamada-ui/react';
 import { Sawarabi_Gothic } from "next/font/google";
 const SawarabiGothicFont = Sawarabi_Gothic({
   weight: "400",
