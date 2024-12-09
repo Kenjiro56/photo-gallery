@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button, CardFooter } from "@yamada-ui/react";
+import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button, CardFooter, Text } from "@yamada-ui/react";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 import DetailModal from '@/app/components/detailModal';
 import { Zen_Kurenaido, Sawarabi_Gothic } from "next/font/google";
@@ -105,7 +105,9 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
                     <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)} objectFit="cover"/>
                 </CardBody>
                 <CardFooter justifyContent="center" className={ZenKurenaidoFont.className}>
-                  { photo.comment}
+                  <Text fontSize='1vw'>
+                    { photo.comment }
+                  </Text>
                 </CardFooter>
               </Card>
           </GridItem>
