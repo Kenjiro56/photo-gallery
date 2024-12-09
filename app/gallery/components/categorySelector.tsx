@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button, CardFooter, Text } from "@yamada-ui/react";
+import { Select, SelectItem, Flex, Grid, GridItem, CardBody, Card, Image, Button, CardFooter, Text, useBreakpointValue } from "@yamada-ui/react";
 import { MicroCMSPhoto } from '@/types/microcmstype';
 import DetailModal from '@/app/components/detailModal';
 import { Zen_Kurenaido, Sawarabi_Gothic } from "next/font/google";
@@ -80,6 +80,8 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
     setModalProps(props);
   };
 
+  const isMobile = useBreakpointValue({ base: true, lg: false })
+
   return (
     <>
       <Flex justify='right' gap='2' mb='2'>
@@ -97,18 +99,20 @@ const CategorySelector: React.FC<SelectorProps> = ({props}) => {
           borderColor='#333'
         />
       </Flex>
-      <Grid templateColumns="repeat(3, 1fr)" gap="2%" mb='15%'>
+      <Grid templateColumns={{base: "repeat(3, 1fr)", xl: "repeat(2, 1fr)"}} gap="2%" mb='15%'>
         {renderData.map((photo, index) => (
           <GridItem key={index}>
               <Card backgroundColor='white'>
                 <CardBody>
                     <Image src={photo.image.url} alt="photo" onClick={() => modalHandler(photo)} objectFit="cover"/>
                 </CardBody>
-                <CardFooter justifyContent="center" className={ZenKurenaidoFont.className}>
-                  <Text fontSize='1vw'>
-                    { photo.comment }
-                  </Text>
-                </CardFooter>
+                {isMobile &&
+                  <CardFooter justifyContent="center" className={ZenKurenaidoFont.className}>
+                    <Text fontSize='1vw'>
+                      { photo.comment }
+                    </Text>
+                  </CardFooter>
+                }
               </Card>
           </GridItem>
         ))}
