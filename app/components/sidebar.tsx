@@ -10,7 +10,6 @@ const SawarabiGothicFont = Sawarabi_Gothic({
 
 
 const SideBar = () => {
-  const isMobile = useBreakpointValue({ base: true, lg: false })
   return (
       <Box
         position='fixed'
