@@ -29,9 +29,9 @@ export default async function Home() {
         Kenjiro&#39;s Gallery
       </Text>
       <Center>
-        <h1 className={`${ NothingYouCouldDoFont.className } text-[3vw]`} >New Photo</h1>
+        <h1 className={`${ NothingYouCouldDoFont.className } text-[4.5vw]`} >New Photo</h1>
       </Center>
-      <Carousel slideSize="50%" autoplay>
+      <Carousel slideSize={{base: "50%", xl: "100%"}} autoplay>
         {newData.map((photo, index) => (
           <CarouselSlide as={Center} key={index}>
             <Image src={photo.image.url} alt='photo'/>
